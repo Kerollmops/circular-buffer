@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cbuffer.h                                          :+:      :+:    :+:   */
+/*   helper.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/28 20:22:33 by crenault          #+#    #+#             */
-/*   Updated: 2016/02/28 22:23:14 by crenault         ###   ########.fr       */
+/*   Created: 2016/02/28 22:20:15 by crenault          #+#    #+#             */
+/*   Updated: 2016/02/28 22:23:11 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CBUFFER_H
-# define CBUFFER_H
+#include "cbuffer.h"
 
-typedef struct		s_cbuffer
+unsigned long	real_buffer_pos(t_cbuffer const *cbuffer, unsigned long pos)
 {
-	int				*buffer;
-	unsigned long	size;
+	unsigned long	new_pos;
 
-	unsigned long	start;
-	unsigned long	end;
-
-}					t_cbuffer;
-
-unsigned long		real_buffer_pos(t_cbuffer const *cbuffer, unsigned long p);
-
-#endif
+	new_pos = cbuffer->start + pos;
+	if (new_pos > cbuffer->size)
+		return (new_pos - cbuffer->size);
+	return (new_pos);
+}

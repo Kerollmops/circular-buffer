@@ -6,7 +6,7 @@
 #    By: crenault <crenault@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/13 15:36:50 by crenault          #+#    #+#              #
-#    Updated: 2016/02/28 20:22:09 by crenault         ###   ########.fr        #
+#    Updated: 2016/02/28 22:23:40 by crenault         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,8 @@ CFLAGS = $(FLAGS) $(INCLUDE)
 
 # to compile files
 SRC = cbuffer.c
+SRC += distance_target.c
+SRC += helper.c
 
 # paths of source files
 SRCDIR = src

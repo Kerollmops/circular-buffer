@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cbuffer.h                                          :+:      :+:    :+:   */
+/*   bool.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/28 20:22:33 by crenault          #+#    #+#             */
-/*   Updated: 2016/02/28 22:23:14 by crenault         ###   ########.fr       */
+/*   Created: 2016/02/28 21:38:05 by crenault          #+#    #+#             */
+/*   Updated: 2016/02/28 21:38:39 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CBUFFER_H
-# define CBUFFER_H
+#ifndef BOOL_H
+# define BOOL_H
 
-typedef struct		s_cbuffer
+typedef enum	e_bool
 {
-	int				*buffer;
-	unsigned long	size;
+	TRUE = 1,
+	FALSE = 0
 
-	unsigned long	start;
-	unsigned long	end;
-
-}					t_cbuffer;
-
-unsigned long		real_buffer_pos(t_cbuffer const *cbuffer, unsigned long p);
+}				t_bool;
 
 #endif
