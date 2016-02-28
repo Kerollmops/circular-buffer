@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/28 20:21:29 by crenault          #+#    #+#             */
-/*   Updated: 2016/02/28 22:25:00 by crenault         ###   ########.fr       */
+/*   Updated: 2016/02/28 22:53:17 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 #include <strings.h>
 #include "info_retrieving.h"
 
-static void		display_array(t_cbuffer const *cbuffer)
+static void		display_buffer(t_cbuffer const *cbuffer)
 {
 	unsigned long	i;
 
 	i = cbuffer->start;
-	printf("[ ");
+	printf("Circular buffer: [ ");
 	while (1)
 	{
 		printf("%d ", cbuffer->buffer[i]);
@@ -42,28 +42,35 @@ int				main(void)
 	unsigned long	pos;
 
 	// init cbuffer
-	cbuffer.size = 7;
+	cbuffer.size = 6;
 	cbuffer.buffer = (int*)malloc(sizeof(int) * cbuffer.size);
 	// bzero(cbuffer.buffer, sizeof(int) * cbuffer.size);
 
 	// init buffer
-	cbuffer.buffer[0] = 6;
-	cbuffer.buffer[1] = 0;
-	cbuffer.buffer[2] = 1;
-	cbuffer.buffer[3] = 2;
-	cbuffer.buffer[4] = 3;
-	cbuffer.buffer[5] = 4;
-	cbuffer.buffer[6] = 5;
+	cbuffer.buffer[0] = 0;
+	cbuffer.buffer[1] = 1;
+	cbuffer.buffer[2] = 2;
+	cbuffer.buffer[3] = 3;
+	cbuffer.buffer[4] = 4;
+	cbuffer.buffer[5] = 5;
 
 	// init start/end
 	cbuffer.start = 1;
 	cbuffer.end = 0;
 
+	// display buffer
+	display_buffer(&cbuffer);
+
+	// infos
+	printf("Start (pos: %ld, value: %d)\n", cbuffer.start, cbuffer.buffer[cbuffer.start]);
+	printf("End (pos: %ld, value: %d)\n", cbuffer.end, cbuffer.buffer[cbuffer.end]);
+
 	// target pos
 	pos = 2;
 	dist_target = distance_target_end(&cbuffer, pos);
 
-	display_array(&cbuffer);
-	printf("dist from (%ld) to end is: %ld\n", pos, dist_target);
+	printf("dist from (pos: %ld, value: %d) to (pos: end, value: %d) is: %ld\n",
+						pos, cbuffer.buffer[real_buffer_pos(&cbuffer, pos)],
+						cbuffer.buffer[cbuffer.end], dist_target);
 	return (0);
 }
