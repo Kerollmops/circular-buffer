@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/28 22:20:15 by crenault          #+#    #+#             */
-/*   Updated: 2016/02/28 22:23:11 by crenault         ###   ########.fr       */
+/*   Updated: 2016/02/28 22:59:12 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,9 @@ unsigned long	real_buffer_pos(t_cbuffer const *cbuffer, unsigned long pos)
 	if (new_pos > cbuffer->size)
 		return (new_pos - cbuffer->size);
 	return (new_pos);
+}
+
+int				*get_value(t_cbuffer const *cbuffer, unsigned long pos)
+{
+	return (&cbuffer->buffer[real_buffer_pos(cbuffer, pos)]);
 }

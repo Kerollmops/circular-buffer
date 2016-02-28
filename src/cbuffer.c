@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/28 20:21:29 by crenault          #+#    #+#             */
-/*   Updated: 2016/02/28 22:53:17 by crenault         ###   ########.fr       */
+/*   Updated: 2016/02/28 22:59:42 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int				main(void)
 	dist_target = distance_target_end(&cbuffer, pos);
 
 	printf("dist from (pos: %ld, value: %d) to (pos: end, value: %d) is: %ld\n",
-						pos, cbuffer.buffer[real_buffer_pos(&cbuffer, pos)],
+						pos, *get_value(&cbuffer, pos),
 						cbuffer.buffer[cbuffer.end], dist_target);
 	return (0);
 }
